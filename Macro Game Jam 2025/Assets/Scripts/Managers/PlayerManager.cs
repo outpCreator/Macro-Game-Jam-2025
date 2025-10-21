@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void InitPlayer()
     {
         if (playerInstance != null) return;
 

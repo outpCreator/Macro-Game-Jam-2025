@@ -12,8 +12,7 @@ public class DebugMenu : MonoBehaviour
             showMenu = !showMenu;
             PlayerControls.debugMenuActive = showMenu;
 
-            Cursor.lockState = showMenu ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = showMenu;
+            CameraManager.Instance.ToggleCursorLockState(showMenu);
         }
     }
 
