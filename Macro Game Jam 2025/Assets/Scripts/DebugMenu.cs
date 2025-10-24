@@ -67,6 +67,14 @@ public class DebugMenu : MonoBehaviour
         data.player.playerPosition = new SerializableVector2(player.position);
         data.player.playerRotation = new SerializableRotation2D(player.rotation);
 
+        // Inventory
+        data.inventory = new InventoryData();
+        var inventory = InventoryManager.instance;
+
+        data.inventory.currentInventorySlots = inventory.currentInventorySlots;
+        data.inventory.maxInventorySize = inventory.maxInventorySize;
+        data.inventory.tearOneItems = inventory.tearOneItems;
+
         // World
         data.world = new WorldData();
 
@@ -86,16 +94,13 @@ public class DebugMenu : MonoBehaviour
         // Player
         var player = PlayerManager.Instance.playerTransform;
 
-        // 2D-Physik kurz parken
         var rb2d = player.GetComponent<Rigidbody2D>();
         bool hadRb2d = rb2d != null;
         if (hadRb2d) rb2d.simulated = false;
 
-        // Position: x,y aus Save, z beibehalten
         float currentZ = player.position.z;
         player.position = data.player.playerPosition.ToVector3(currentZ);
 
-        // Rotation: nur Z
         player.rotation = data.player.playerRotation.ToQuaternion();
 
         if (hadRb2d)
@@ -107,7 +112,15 @@ public class DebugMenu : MonoBehaviour
 
         Debug.Log($"[DebugMenu] Spieler geladen – Position: {player.position}, Rotation Z: {player.eulerAngles.z}°");
 
-        // Welt
+        // Inventory
+        var inventory = InventoryManager.instance;
+        inventory.currentInventorySlots = data.inventory.currentInventorySlots;
+        inventory.maxInventorySize = data.inventory.maxInventorySize;
+        inventory.tearOneItems = data.inventory.tearOneItems;
 
+        // Welt
+        data.world = new WorldData();
+
+        Debug.Log($"[DebugMenu] Spielstand aus Slot {slot} geladen");
     }
 }

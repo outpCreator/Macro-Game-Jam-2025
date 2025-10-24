@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
     public UIMenu[] Menus;
 
     [Header("UI Components")]
-    public Slider musicSlider, sfxSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
 
     private void Awake()
     {

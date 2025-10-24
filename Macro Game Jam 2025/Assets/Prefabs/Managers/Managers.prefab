@@ -139,11 +139,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2759847889463880474}
   - component: {fileID: 9144013674321657437}
-  - component: {fileID: 2185602677729392933}
   - component: {fileID: 8422998460906957806}
-  - component: {fileID: 2231825547437416873}
+  - component: {fileID: 1137591808229450083}
   - component: {fileID: 7715116879417099643}
+  - component: {fileID: 2231825547437416873}
   - component: {fileID: 3469307905738846700}
+  - component: {fileID: 2185602677729392933}
+  - component: {fileID: 4048542373873281321}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -180,6 +182,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547b9cd64cbb5a6448d0975f55a179b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  loadingScreenPrefab: {fileID: 0}
+--- !u!114 &8422998460906957806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573145613262657604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f7cc1b5ba5d664ea2e8171277efdcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  playerPrefab: {fileID: 0}
+  playerInstance: {fileID: 0}
+  playerControls: {fileID: 0}
+  playerTransform: {fileID: 0}
+  spawnPoint: {fileID: 0}
+--- !u!114 &1137591808229450083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573145613262657604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6281b6d3634c98a47b799db5324e075f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  maxInventorySize: 20
+  currentInventorySlots: 0
+  tearOneItems:
+  - itemPrefab: {fileID: 0}
+    itemName: 
+    itemDiscription: 
+    type: 0
+    itemIcon: {fileID: 0}
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &7715116879417099643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573145613262657604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2f6dc42ddda78499aa356e1e2de819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  Menus:
+  - menuName: 
+    menuObject: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
+--- !u!114 &2231825547437416873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573145613262657604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd31826fed757469647c1306bb969a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  musicSounds: []
+  sfxSounds: []
+  musicSource: {fileID: 4036037782439398456}
+  sfxSource: {fileID: 7136757076680563270}
+--- !u!114 &3469307905738846700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573145613262657604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca7270c50648cc478ab59ecb3999c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugMenu
 --- !u!114 &2185602677729392933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +289,7 @@ MonoBehaviour:
   onSceneLoadedFully:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8422998460906957806
+--- !u!114 &4048542373873281321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,59 +298,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3573145613262657604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f7cc1b5ba5d664ea2e8171277efdcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 65bc003d63cbce744b7cbbdb8eff3b39, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  playerPrefab: {fileID: 0}
-  playerInstance: {fileID: 0}
-  playerControls: {fileID: 0}
-  playerTransform: {fileID: 0}
-  spawnPoint: {fileID: 0}
---- !u!114 &2231825547437416873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3573145613262657604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80fd31826fed757469647c1306bb969a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  musicSounds: []
-  sfxSounds: []
-  musicSource: {fileID: 4036037782439398456}
-  sfxSource: {fileID: 7136757076680563270}
---- !u!114 &7715116879417099643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3573145613262657604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2f6dc42ddda78499aa356e1e2de819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  Menus:
-  - menuName: 
-    menuObject: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
---- !u!114 &3469307905738846700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3573145613262657604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca7270c50648cc478ab59ecb3999c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DebugMenu
+  m_EditorClassIdentifier: Assembly-CSharp::CameraManager
 --- !u!1 &6754697647912708712
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +348,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

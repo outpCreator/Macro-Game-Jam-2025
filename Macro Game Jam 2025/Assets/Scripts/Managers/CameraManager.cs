@@ -9,8 +9,6 @@ public class CameraManager : MonoBehaviour
     float followDuration = 0.5f;
     Transform followTarget;
 
-    float edgeThreshold = 5.0f;
-
     Camera mainCamera;
 
     private void Awake()

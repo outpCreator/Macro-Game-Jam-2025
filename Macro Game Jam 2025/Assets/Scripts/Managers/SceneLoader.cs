@@ -34,7 +34,7 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(SwitchSceneRoutine(sceneName, entryID));
     }
 
-    public IEnumerator SwitchSceneRoutine(string sceneName, string entryID = "")
+    IEnumerator SwitchSceneRoutine(string sceneName, string entryID = "")
     {
         Debug.Log($"[SceneLoader] Switching to scene '{sceneName}' (entryID: {entryID})");
 
@@ -45,8 +45,7 @@ public class SceneLoader : MonoBehaviour
         }
 
         // Optional Fade-Out
-        if (ScreenFader.Instance != null)
-            yield return ScreenFader.Instance.FadeToBlack();
+        if (ScreenFader.Instance != null) yield return ScreenFader.Instance.FadeToBlack();
 
         onBeforeSceneUnload.Invoke();
 
@@ -67,65 +66,23 @@ public class SceneLoader : MonoBehaviour
         // Load target scene
         AsyncOperation loadOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         while (!loadOp.isDone)
+        {
+            // Add optional loading progress handling here
             yield return null;
+        }
+
 
         Scene loadedScene = SceneManager.GetSceneByName(sceneName);
-        if (loadedScene.IsValid())
-            SceneManager.SetActiveScene(loadedScene);
+        if (loadedScene.IsValid()) SceneManager.SetActiveScene(loadedScene);
 
         onSceneChanged.Invoke(entryID);
         yield return new WaitForEndOfFrame();
 
-        if (ScreenFader.Instance != null)
-            yield return ScreenFader.Instance.FadeFromBlack();
+        if (ScreenFader.Instance != null) yield return ScreenFader.Instance.FadeFromBlack();
 
         onSceneLoadedFully.Invoke();
 
         Debug.Log($"[SceneLoader] Scene '{sceneName}' loaded and active.");
-    }
-
-    public async Task SwitchSceneAsync(string sceneName, string entryID = "")
-    {
-        Debug.Log($"[SceneLoader] Async switch to scene '{sceneName}'");
-
-        if (!Application.CanStreamedLevelBeLoaded(sceneName))
-        {
-            Debug.LogError($"[SceneLoader] Scene '{sceneName}' cannot be loaded.");
-            return;
-        }
-
-        if (ScreenFader.Instance != null)
-            await ScreenFader.Instance.FadeToBlackAsync();
-
-        onBeforeSceneUnload.Invoke();
-
-        scenesToUnload.Clear();
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            Scene s = SceneManager.GetSceneAt(i);
-            if (s.name != gameScene)
-                scenesToUnload.Add(s);
-        }
-
-        foreach (Scene s in scenesToUnload)
-        {
-            await SceneManager.UnloadSceneAsync(s);
-        }
-
-        AsyncOperation loadOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        while (!loadOp.isDone)
-            await Task.Yield();
-
-        Scene loadedScene = SceneManager.GetSceneByName(sceneName);
-        if (loadedScene.IsValid())
-            SceneManager.SetActiveScene(loadedScene);
-
-        onSceneChanged.Invoke(entryID);
-
-        if (ScreenFader.Instance != null)
-            await ScreenFader.Instance.FadeFromBlackAsync();
-
-        onSceneLoadedFully.Invoke();
     }
 
     [RuntimeInitializeOnLoadMethod]

@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] LoadingScreen loadingScreenPrefab;
 
     private void Awake()
     {
@@ -17,8 +18,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void InitGame()
+    private void Start()
     {
-
+        PlayerManager.Instance.InitPlayer();
     }
 }

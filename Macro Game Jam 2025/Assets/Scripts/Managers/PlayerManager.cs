@@ -33,5 +33,12 @@ public class PlayerManager : MonoBehaviour
 
         playerControls = playerInstance.GetComponent<PlayerControls>();
         playerTransform = playerInstance.transform;
+
+        SceneLoader.Instance.onSceneChanged.AddListener(OnSceneChange);
+    }
+
+    public void OnSceneChange(string entryID)
+    {
+
     }
 }
