@@ -82,16 +82,23 @@ MonoBehaviour:
   moveSpeed: 5
   jumpPower: 8
   maxJumpTime: 0.2
-  jumpGravityScale: 0.3
+  jumpGravityScale: 0.7
   fallMultiplier: 2
   lowJumpMultiplier: 1
   coyoteTime: 0.1
   jumpBufferTime: 0.1
+  enableFlutter: 1
+  canFlutter: 1
+  flutterMaxTime: 0.6
+  flutterGravityScale: 0.3
+  flutterLift: 3.5
   rb: {fileID: 1391329332339464577}
   groundCheck: {fileID: 4480700940470636657}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  isOnPlatform: 0
+  platformRb: {fileID: 0}
 --- !u!212 &7917333516777002903
 SpriteRenderer:
   m_ObjectHideFlags: 0

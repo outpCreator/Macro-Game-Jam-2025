@@ -8,12 +8,12 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float maxJumpTime = 0.2f;
     [SerializeField] float jumpGravityScale = 0.5f;
     [SerializeField] float fallMultiplier = 2.5f;
-    [SerializeField] float lowJumpMultiplier = 3.0f;
     [SerializeField] float coyoteTime = 0.1f;
     [SerializeField] float jumpBufferTime = 0.1f;
 
     [Header("Flutter Settings")]
-    public bool enableFlutter = true;
+    public bool enableFlutter = false;
+    public bool canFlutter = true;
     [SerializeField] float flutterMaxTime = 0.45f;
     [SerializeField] float flutterGravityScale = 0.3f;
     [SerializeField] float flutterLift = 3.5f;
@@ -79,7 +79,7 @@ public class PlayerControls : MonoBehaviour
             isFluttering = false;
         }
 
-        if (!isGrounded && enableFlutter && InputManager.Instance.jumpStarted && !hasFluttered && !isJumping)
+        if (enableFlutter && !isGrounded && canFlutter && InputManager.Instance.jumpStarted && !hasFluttered && !isJumping)
         {
             isFluttering = true;
             hasFluttered = true;
@@ -110,7 +110,7 @@ public class PlayerControls : MonoBehaviour
             isFluttering = false;
         }
 
-        if (isFluttering && InputManager.Instance.jumpHeld && flutterTimer > 0)
+        if (enableFlutter && isFluttering && InputManager.Instance.jumpHeld && flutterTimer > 0)
         {
             rb.gravityScale = baseGravityScale * flutterGravityScale;
             if (rb.linearVelocity.y < flutterLift)
