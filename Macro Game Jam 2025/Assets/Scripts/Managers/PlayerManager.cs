@@ -5,12 +5,12 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] Transform spawnPoint;
 
     [HideInInspector] public GameObject playerInstance;
     [HideInInspector] public PlayerControls playerControls;
     [HideInInspector] public Transform playerTransform;
 
-    [HideInInspector] public Transform spawnPoint;
 
     private void Awake()
     {
@@ -35,6 +35,8 @@ public class PlayerManager : MonoBehaviour
         playerTransform = playerInstance.transform;
 
         SceneLoader.Instance.onSceneChanged.AddListener(OnSceneChange);
+
+        CameraManager.Instance.CameraFollow(playerTransform, 5f, true);
     }
 
     public void OnSceneChange(string entryID)
