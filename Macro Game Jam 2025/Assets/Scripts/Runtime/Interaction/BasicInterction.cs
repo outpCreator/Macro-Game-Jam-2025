@@ -13,7 +13,7 @@ public class BasicInterction : MonoBehaviour
 
             if (InputManager.Instance.interact)
             {
-                //OnInteracted?.Invoke();
+                OnInteracted?.Invoke();
 
                 Debug.Log("Interacted with " + gameObject.name);
 
