@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3190977469691992900}
   - component: {fileID: 4211923354364980291}
+  - component: {fileID: 2726051042269384364}
   - component: {fileID: 8624831903241348450}
-  - component: {fileID: 6084467099467619054}
   m_Layer: 0
   m_Name: Blume_1
   m_TagString: Untagged
@@ -92,6 +92,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2726051042269384364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5065278687849561537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca3768349993cb44b6735e45ce15cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueStarter
+  dialogueName: Example
+  isOneTimeEvent: 0
 --- !u!61 &8624831903241348450
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,18 +152,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6084467099467619054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5065278687849561537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f6979f8fbb9db4aaf863dea5bbf5bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BasicInterction
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls: []

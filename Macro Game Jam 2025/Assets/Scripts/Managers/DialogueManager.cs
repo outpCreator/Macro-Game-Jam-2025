@@ -5,9 +5,9 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     public DialogueAsset[] dialogueAssets;
-    [SerializeField] Transform dialogueAnchor;
 
     DialogueStarter currentDialogueStarter;
+    GameObject currentDialogueObject;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         DialogueAsset dialogueAsset = GetDialogue(dialogueName);
         if (dialogueAsset != null)
         {
-            GameObject dialogueInstance = Instantiate(dialogueAsset.dialoguePrefab, dialogueAnchor);
+            currentDialogueObject = Instantiate(dialogueAsset.dialoguePrefab);
             Dialogue dialogue = dialogueAsset.dialogue;
             dialogue.StartDialogue();
         }
@@ -41,6 +41,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        Destroy(currentDialogueObject);
+
         if (currentDialogueStarter != null)
         {
             currentDialogueStarter.ResetDialogue();
